@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="estilo.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="img/bonomologo.png" />
+    <link href="https://fonts.googleapis.com/css?family=Charmonman&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Container principal -->
+    <div id="total">
+        <!-- Cabeçalho -->
+        <header id="topo">
+            <div id="logo">
+                <a href="index.html"><img src="img/Bonomologo.png" width="220" height="120" alt="Logo Bonomo Steak House"></a>
+            </div>
+        </header>
+
+        <!-- Menu de navegação -->
+        <nav id="menu">
+            <a href="index.html">Home</a>
+            <a href="Cardapio.html">Cardápio</a>
+            <a href="Promocoes.html">Promoções</a>
+            <a href="Reservas.html">Reservas</a>
+            <a href="Contato.html">Contato</a>
+            <a href="Localizacao.html">Localização</a>
+        </nav>
+
+
+        <!-- Banner com imagens rotativas -->
+        <section id="banner">
+            <div class="carousel">
+                <img class="mySlides" src="img/1novo.jpg" alt="Imagem de Banner 1">
+                <img class="mySlides" src="img/steak2.jpg" alt="Imagem de Banner 2">
+                <img class="mySlides" src="img/12.jpg" alt="Imagem de Banner 3">
+            </div>
+            <script>
+                var slideIndex = 0;
+                carousel();
+
+                function carousel() {
+                    var slides = document.getElementsByClassName("mySlides");
+                    for (var i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";  
+                    }
+                    slideIndex++;
+                    if (slideIndex > slides.length) { slideIndex = 1 }    
+                    slides[slideIndex - 1].style.display = "block";  
+                    setTimeout(carousel, 5000); // Muda a imagem a cada 5 segundos
+                }
+            </script>
+        </section>
+
+        <!-- Descrição do Restaurante -->
+        <section id="conteudo1">
+            <h1><span style="font-family: 'Charmonman', cursive; font-size: 35px;">Bonomo Steak House</span></h1>
+            <p>Desde 2010, <b>A Bonomo Steak House</b> oferece o melhor da alta gastronomia brasileira.</p>
+            <p>Situado na região nobre do Rio de Janeiro, o restaurante oferece uma experiência gastronômica única, com uma grande variedade de pratos.</p>
+            <p>A casa possui dois ambientes: um para o rodízio e outro para as guarnições. O chef está à frente dessa cozinha há anos, sempre criando pratos sofisticados para agradar todos os paladares.</p>
+            <p>A Bonomo também oferece um espaço refinado para a realização de eventos com toda a infraestrutura necessária.</p>
+            <p>Esperamos por você!</p>
+        </section>
+
+        <!-- Imagens e Links para as páginas internas -->
+        <section id="conteudo2">
+            <div class="conteudo-item">
+                <img src="img/img2.jpg" alt="Imagem Promocional" class="img-responsiva">
+                <a href="promocoes.html" class="btn btn-green">Ver Mais</a>
+            </div>
+
+            <div class="conteudo-item">
+                <img src="img/258.jpg" alt="Imagem Reservas" class="img-responsiva">
+                <a href="reservas.html" class="btn btn-green">Ver Mais</a>
+            </div>
+
+            <div class="conteudo-item">
+                <img src="img/img3.jpg" alt="Imagem Cardápio" class="img-responsiva">
+                <a href="cardapio.html" class="btn btn-green">Ver Mais</a>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer id="rodape">
+            <div id="social">
+                <a href="https://web.facebook.com/BonomoSteakHouse/?ref=bookmarks">
+                    <img src="img/f.png" alt="Facebook" width="50" height="50">
+                </a>
+                <a href="https://mail.google.com/mail/u/0/?tab=wm#inbox">
+                    <img src="img/e.png" alt="Email" width="50" height="50">
+                </a>
+                <a href="https://www.instagram.com/?hl=pt-br">
+                    <img src="img/i.png" alt="Instagram" width="50" height="50">
+                </a>
+            </div>
+
+            <!-- Rodapé - imagem "end" com o texto ao lado -->
+            <div id="endereco" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <img src="img/end.png" alt="Endereço" style="width: 20px; height: auto;">
+                <p>Rua Marquês de São Vicente | Gávea | Rio de Janeiro</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- CSS personalizado para a responsividade -->
+    <style>
+        /* Estilos globais */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #000000;
+        }
+
+        /* Topo */
+        #topo {
+            background-color: #5d081d;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Menu de navegação */
+        #menu {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        #menu a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+        }
+
+        #menu a:hover {
+            color: #ffcc00; /* Alterando a cor no hover */
+            text-decoration: none; /* Removendo sublinhado */
+        }
+
+        #menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffcc00;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        #menu a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Banner */
+        #banner .carousel {
+            position: relative;
+            max-width: 100%;
+            height: 500px;
+        }
+
+        #banner .mySlides {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        /* Conteúdo principal */
+        #conteudo1 {
+            padding: 30px;
+            text-align: center;
+        }
+
+        #conteudo2 {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .conteudo-item {
+            width: 30%;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .conteudo-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .btn-green {
+            background-color: #5d081d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* Rodapé */
+        #rodape {
+            background-color: #5d081d;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #social img {
+            margin: 0 10px;
+        }
+
+        #endereco p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .conteudo-item {
+                width: 90%;
+            }
+
+            #banner {
+                height: 300px;
+            }
+
+            /* Ajuste para a imagem e o texto no rodapé em telas menores */
+            #endereco {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+
+            #endereco img {
+                width: 30px;  /* Imagem menor em dispositivos móveis */
+            }
+        }
+    </style>
+</body>
+</html>

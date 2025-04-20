@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva</title>
+    <link rel="stylesheet" href="estilo.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="img/bonomologo.png" />
+    <link href="https://fonts.googleapis.com/css?family=Charmonman&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Container principal -->
+    <div id="total">
+        <!-- Cabeçalho -->
+        <header id="topo">
+            <div id="logo">
+                <a href="index.html"><img src="img/Bonomologo.png" width="220" height="120" alt="Logo Bonomo Steak House"></a>
+            </div>
+        </header>
+
+        <!-- Menu de navegação -->
+        <nav id="menu">
+            <a href="index.html">Home</a>
+            <a href="Cardapio.html">Cardápio</a>
+            <a href="Promocoes.html">Promoções</a>
+            <a href="Reservas.html">Reservas</a>
+            <a href="Contato.html">Contato</a>
+            <a href="Localizacao.html">Localização</a>
+        </nav>
+
+
+        <!-- Contato & Reserva -->
+        <section id="contato-reserva">
+            <!-- Formulário de Reserva -->
+            <div class="formulario" id="form-reserva">
+                <h3>Faça sua Reserva</h3>
+                <form id="form-reserva" action="reservar.php" method="post">
+                    <label for="data">Data da Reserva:</label>
+                    <input type="date" id="data" name="data" required>
+                
+                    <label for="hora">Hora:</label>
+                    <input type="time" id="hora" name="hora" required>
+                
+                    <label for="num-pessoas">Número de Pessoas:</label>
+                    <input type="number" id="num-pessoas" name="num-pessoas" min="1" required>
+                
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                
+                    <button type="submit" class="button">Confirmar Reserva</button>
+                </form>
+                
+                <script>
+                    // Definir a data mínima como o dia de hoje
+                    const today = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
+                    document.getElementById('data').setAttribute('min', today);
+                
+                    // Função para aplicar a máscara de telefone
+                    document.getElementById('telefone').addEventListener('input', function(event) {
+                        let phone = event.target.value;
+                
+                        // Remove tudo o que não for número
+                        phone = phone.replace(/\D/g, '');
+                
+                        // Aplica a máscara: (XX) 9XXXX-XXXX
+                        if (phone.length <= 10) {
+                            phone = phone.replace(/^(\d{2})(\d{0,5})(\d{0,4})$/, '($1) $2-$3');
+                        } else {
+                            phone = phone.replace(/^(\d{2})(\d{5})(\d{0,4})$/, '($1) $2-$3');
+                        }
+                
+                        // Atualiza o valor do input com a máscara
+                        event.target.value = phone;
+                    });
+                
+                    // Validar horário de funcionamento ao enviar o formulário
+                    document.getElementById('form-reserva').addEventListener('submit', function(event) {
+                        event.preventDefault();  // Impedir o envio do formulário até a validação
+                
+                        const dataInput = document.getElementById('data');
+                        const horaInput = document.getElementById('hora');
+                        const telefoneInput = document.getElementById('telefone');
+                
+                        const selectedDate = new Date(dataInput.value);
+                        const selectedTime = horaInput.value;
+                        const selectedHour = parseInt(selectedTime.split(':')[0]);
+                        const selectedMinute = parseInt(selectedTime.split(':')[1]);
+                
+                        // Obter o dia da semana (0 = Domingo, 1 = Segunda-feira, ..., 6 = Sábado)
+                        const dayOfWeek = selectedDate.getDay();
+                
+                        let isValid = true;
+                        let errorMessage = '';
+                
+                        // Validação do horário de funcionamento para o dia selecionado
+                        if (dayOfWeek === 0 || dayOfWeek === 1) { // Domingo ou Segunda-feira
+                            // Verificar se a hora está dentro de 11:00 - 15:30
+                            if (selectedHour < 11 || (selectedHour === 15 && selectedMinute > 30) || selectedHour > 15) {
+                                isValid = false;
+                                errorMessage = 'Horário inválido! Estamos abertos apenas das 11:00 às 15:30 neste dia.';
+                            }
+                        } else if (dayOfWeek >= 2 && dayOfWeek <= 6) { // Terça a Sábado
+                            // Verificar se a hora está dentro de 11:00 - 23:00
+                            if (selectedHour < 11 || selectedHour > 23) {
+                                isValid = false;
+                                errorMessage = 'Horário inválido! Estamos abertos apenas das 11:00 às 23:00 neste dia.';
+                            }
+                        }
+                
+                        // Se a data e hora forem inválidas, mostra um alerta e impede o envio do formulário
+                        if (!isValid) {
+                            alert(errorMessage);
+                            return; // Impede o envio do formulário se o horário for inválido
+                        }
+                
+                        // Exibe a caixa de diálogo de sucesso
+                        alert('Sua reserva foi enviada, já retornaremos com a disponibilidade.');
+                
+                        // Após a confirmação, recarregar a página
+                        location.reload(); // Recarrega a página para limpar os campos do formulário
+                    });
+                </script>
+                         
+            </div>
+
+            <!-- Informações Adicionais -->
+            <div id="informacoes">
+                <h3>Informações Importantes</h3>
+                <p><strong>Horário de Funcionamento:</strong> Domingo e Segunda 11:00 - 15:30 | Terça a Sábado 11:00 - 23:00</p>
+                <p><strong>Contato:</strong> (21) 3026-2030 / 98126-5842</p>
+            </div>
+        </section>
+
+       <!-- Rodapé -->
+       <footer id="rodape">
+        <div id="social">
+            <a href="https://web.facebook.com/BonomoSteakHouse/?ref=bookmarks">
+                <img src="img/F.png" alt="Facebook" width="50" height="50">
+            </a>
+            <a href="https://mail.google.com/mail/u/0/?tab=wm#inbox">
+                <img src="img/E.png" alt="Email" width="50" height="50">
+            </a>
+            <a href="https://www.instagram.com/?hl=pt-br">
+                <img src="img/I.png" alt="Instagram" width="50" height="50">
+            </a>
+        </div>
+
+        <!-- Rodapé - imagem "end" com o texto ao lado -->
+        <div id="endereco" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <img src="img/end.png" alt="Endereço" style="width: 20px; height: auto;">
+            <p>Rua Marquês de São Vicente | Gávea | Rio de Janeiro</p>
+        </div>
+    </footer>
+    </div>
+
+    <!-- CSS personalizado para a responsividade -->
+    <style>
+        /* Estilos globais */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #000000;
+        }
+
+        /* Topo */
+        #topo {
+            background-color: #5d081d;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Menu de navegação */
+        #menu {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        #menu a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+        }
+
+        #menu a:hover {
+            color: #ffcc00; /* Alterando a cor no hover */
+            text-decoration: none; /* Removendo sublinhado */
+        }
+
+        #menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffcc00;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        #menu a:hover::after {
+            transform: scaleX(1);
+        }
+        /* Seção de Reserva */
+        #contato-reserva {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 5px 30px 40px 30px;
+            color: #fff;
+            background: #222;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        .formulario {
+            margin-bottom: 40px;
+        }
+
+        .formulario h3 {
+            font-size: 24px;
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        .formulario form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        input, textarea {
+            background-color: #555;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #5d081d;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #000;
+            color: #5d081d;
+        }
+
+        #informacoes {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #informacoes p {
+            font-size: 16px;
+        }
+
+        /* Rodapé */
+        #rodape {
+            background-color: #5d081d;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #social img {
+            margin: 0 10px;
+        }
+
+        #endereco p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .conteudo-item {
+                width: 90%;
+            }
+
+            #banner {
+                height: 300px;
+            }
+
+            /* Ajuste para a imagem e o texto no rodapé em telas menores */
+            #endereco {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+
+            #endereco img {
+                width: 30px;  /* Imagem menor em dispositivos móveis */
+            }
+        }
+    </style>
+</body>
+</html>

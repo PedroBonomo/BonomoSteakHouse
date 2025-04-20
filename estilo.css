@@ -1,0 +1,223 @@
+/* Resetando margens e preenchimentos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Baloo Bhai', sans-serif;
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+/* Estrutura de header */
+#topo {
+    background-color: #5d081d;
+    padding: 10px 0;
+}
+
+#logo img {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Menu de navegação */
+#menu {
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#menu a {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: inline-block;
+}
+
+#menu a:hover {
+    background-color: #5d081d;
+}
+
+/* Corpo principal */
+#total {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Seção de conteúdo */
+#cont_promo, #cont_reser, #cont_conta, #cont_locali {
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.center {
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: 'Charmonman', cursive;
+    color: #fff;
+    margin: 20px 0;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Imagens e conteúdo de promoções */
+#conteu1, #conteu2, #conteu3, #conteu4, #conteu5, #conteu6 {
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+}
+
+.zoom {
+    position: relative;
+}
+
+.zoom img {
+    width: 100%;
+    height: auto;
+    transition: all 0.3s ease;
+}
+
+.zoom:hover img {
+    transform: scale(1.1);
+}
+
+.text-item {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px;
+}
+
+/* Formulário de Contato */
+.box {
+    padding: 20px;
+    border-radius: 8px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.input_text {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #555;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+textarea.message {
+    width: 100%;
+    padding: 10px;
+    height: 120px;
+    background-color: #555;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    resize: none;
+}
+
+.button {
+    background-color: #5d081d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #7b1a2f;
+}
+
+/* Rodapé */
+#rodape {
+    background-color: #5d081d;
+    padding: 20px;
+    text-align: center;
+}
+
+#rodape img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+#rodape p {
+    color: white;
+    font-size: 16px;
+}
+
+#social {
+    text-align: center;
+}
+
+#centro {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Estilo para Localização */
+#conte1 {
+    width: 100%;
+    padding: 20px;
+}
+
+iframe {
+    width: 100%;
+    height: 450px;
+}
+
+/* Personalizando as cores de fundo */
+body {
+    background-color: #1e1e1e;
+}
+
+/* Customizações específicas */
+#menu {
+    background-color: #333;
+}
+
+#topo {
+    background-color: #5d081d;
+}
+
+/* Personalização para links */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #7b1a2f;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    #conteu1, #conteu2, #conteu3, #conteu4, #conteu5, #conteu6 {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
+    }
+
+    .box {
+        width: 90%;
+    }
+
+    iframe {
+        height: 350px;
+    }
+}

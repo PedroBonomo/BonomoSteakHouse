@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" href="estilo.css" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="img/bonomologo.png" />
+    <link href="https://fonts.googleapis.com/css?family=Charmonman&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Container principal -->
+    <div id="total">
+        <!-- Cabeçalho -->
+        <header id="topo">
+            <div id="logo">
+                <a href="index.html"><img src="img/Bonomologo.png" width="220" height="120" alt="Logo Bonomo Steak House"></a>
+            </div>
+        </header>
+
+        <!-- Menu de navegação -->
+        <nav id="menu">
+            <a href="index.html">Home</a>
+            <a href="Cardapio.html">Cardápio</a>
+            <a href="Promocoes.html">Promoções</a>
+            <a href="Reservas.html">Reservas</a>
+            <a href="Contato.html">Contato</a>
+            <a href="Localizacao.html">Localização</a>
+        </nav>
+
+        <!-- Seção de Contato -->
+        <section id="contato-reserva">
+            <!-- Formulário de Contato -->
+            <div class="formulario" id="form-contato">
+                <h3>Entre em Contato</h3>
+                <form name="meuForm" method="post" id="formulario">
+                    <label for="name">Nome Completo:</label>
+                    <input type="text" class="input_text" name="nome" id="name" required />
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" class="input_text" name="email" id="email" required />
+
+                    <label for="subject">Assunto:</label>
+                    <input type="text" class="input_text" name="assunto" id="subject" required />
+
+                    <label for="feedback">Mensagem:</label>
+                    <textarea class="message" name="feedback" id="feedback" required style="resize: none"></textarea>
+
+                    <button type="submit" class="button">Enviar</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer id="rodape">
+            <div id="social">
+                <a href="https://web.facebook.com/BonomoSteakHouse/?ref=bookmarks">
+                    <img src="img/F.png" alt="Facebook" width="50" height="50">
+                </a>
+                <a href="https://mail.google.com/mail/u/0/?tab=wm#inbox">
+                    <img src="img/E.png" alt="Email" width="50" height="50">
+                </a>
+                <a href="https://www.instagram.com/?hl=pt-br">
+                    <img src="img/I.png" alt="Instagram" width="50" height="50">
+                </a>
+            </div>
+
+            <!-- Rodapé - imagem "end" com o texto ao lado -->
+            <div id="endereco" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <img src="img/end.png" alt="Endereço" style="width: 20px; height: auto;">
+                <p>Rua Marquês de São Vicente | Gávea | Rio de Janeiro</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- CSS personalizado para a responsividade -->
+    <style>
+        /* Estilos globais */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: #000000;
+        }
+
+        /* Topo */
+        #topo {
+            background-color: #5d081d;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Menu de navegação */
+        #menu {
+            background-color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        #menu a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+        }
+
+        #menu a:hover {
+            color: #ffcc00; /* Alterando a cor no hover */
+            text-decoration: none; /* Removendo sublinhado */
+        }
+
+        #menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffcc00;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        #menu a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* Seção de Contato */
+        #contato-reserva {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 5px 30px 40px 30px;
+            color: #fff;
+            background: #222;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        .formulario {
+            margin-bottom: 40px;
+        }
+
+        .formulario h3 {
+            font-size: 24px;
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        .formulario form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        input, textarea {
+			background-color: #ffcc00;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #5d081d;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #000;
+            color: #5d081d;
+        }
+
+        #informacoes {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #informacoes p {
+            font-size: 16px;
+        }
+
+        /* Rodapé */
+        #rodape {
+            background-color: #5d081d;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #social img {
+            margin: 0 10px;
+        }
+
+        #endereco p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .conteudo-item {
+                width: 90%;
+            }
+
+            #banner {
+                height: 300px;
+            }
+
+            /* Ajuste para a imagem e o texto no rodapé em telas menores */
+            #endereco {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+
+            #endereco img {
+                width: 30px;  /* Imagem menor em dispositivos móveis */
+            }
+        }
+    </style>
+</body>
+</html>
